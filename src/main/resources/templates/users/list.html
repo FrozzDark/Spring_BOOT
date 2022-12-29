@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+</head>
+<body>
+<h1>Users List</h1>
+<br/>
+<a th:href="@{/users/new}">Create new user</a>
+<br/>
+
+<div>
+    <table border="1">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Age</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th>Edit</th>
+        </tr>
+        <tr th:each ="user : ${users}">
+            <td th:utext="${user.getId()}">...</td>
+            <td><a th:href="@{/users/{id}(id = ${user.getId()})}" th:utext="${user.getName()}">...</a></td>
+            <td th:utext="${user.getSurname()}">...</td>
+            <td th:utext="${user.getAge()}">...</td>
+            <td th:utext="${user.getEmail()}">...</td>
+            <td th:utext="${user.getPhoneNumber()}">...</td>
+            <td th:utext="${user.getAddress()}">...</td>
+            <td><a th:href="@{/users/{id}/edit(id=${user.getId()})}">Edit</a></td>
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>
